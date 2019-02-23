@@ -17,7 +17,7 @@ public class SoundButton : MonoBehaviour {
         SetMuteValue();
     }
 
-        public void SwitchSound()
+    public void SwitchSound()
     {
         GameModel.IS_MUTE = !GameModel.IS_MUTE;
        
