@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour {
 	
     // To be populated in the inspector
     public Sprite[] sprites; // The 3 node sprites
-    public AudioSource sound1, sound2;
+    public AudioSource sound1, sound2; // Capture sounds for Player 1 and 2
     public GameObject endPopup; // The victory box
     public GameObject[] progressBars;
     public Text[] nodesCount;
@@ -150,7 +150,7 @@ public class GameController : MonoBehaviour {
 		int[] nodesInt = new int[nodesCount.Length];
         int[] clustersInt = new int[clustersCount.Length];
 
-        // Nodes score
+        // Count nodes per player
         foreach (GameObject candidateNode in btns) {
 			int currentOwner = candidateNode.GetComponent<Node> ().owner;
 			if (currentOwner != -1) {
@@ -158,7 +158,7 @@ public class GameController : MonoBehaviour {
 			}
 		}
 
-        
+        // Update nodes count
         for (int i = 0; i < nodesInt.Length; i++)
         {
             string nodeText = " nodes";
@@ -177,7 +177,7 @@ public class GameController : MonoBehaviour {
             progressBars[i].GetComponent<Slider>().value = percent;
         }
 
-            // Clusters score
+        // Clusters score
 		for (int i = 0; i < GameModel.players.Count; i++)
         {
             clustersInt[i] = TilesHelper.CountClusters(i, btns);
@@ -194,17 +194,18 @@ public class GameController : MonoBehaviour {
 		if (GameModel.IS_HUMAN) {
 			playerScore = nodesInt [0] * clustersInt [0];
 		} else {
+            // Score vs. AI depends on the difficulty
 			playerScore = nodesInt [0] * clustersInt [0] * (GameModel.AI_DIFFICULTY + 1);
 		}
 	}
  
     void CheckVictory()
     {
-        int firstOwner = btns[0].GetComponent<Node>().owner; // TODO nasty, use currPlayer
+        // Check that every node is either neutral or belongs to the current player.
         foreach(GameObject obj in btns)
         {
             int currentOwner = obj.GetComponent<Node>().owner;
-            if (currentOwner >= 0 && currentOwner != firstOwner)
+            if (currentOwner >= 0 && currentOwner != currPlayer)
             {
                 return;
             }
@@ -298,7 +299,7 @@ public class GameController : MonoBehaviour {
         //Color particleColor = new Color(playerColor.r, playerColor.g, playerColor.b);
         //particleColor.a = 0.5F;
         //particlesSettings.startColor = new ParticleSystem.MinMaxGradient(particleColor);
-		source.GetComponent<ParticleSystem> ().Play ();
+		source.GetComponent<ParticleSystem>().Play();
     }
 
 }
