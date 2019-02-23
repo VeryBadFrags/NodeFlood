@@ -17,7 +17,7 @@ The levels are randomly generated so that each game is unique.
 Use [Unity](https://unity3d.com/get-unity/download) 2018.3.3f1 or higher.
 
 # Contribute
-Feel free to contribute to the game on [github](https://github.com/VeryBadFrags/NodeFlood)
+Feel free to contribute to the game on [github](https://github.com/VeryBadFrags/NodeFlood).
 
 # License
-[MIT License](https://github.com/VeryBadFrags/NodeFlood/blob/master/LICENSE.txt)
+[MIT License](https://github.com/VeryBadFrags/NodeFlood/blob/master/LICENSE.txt).
