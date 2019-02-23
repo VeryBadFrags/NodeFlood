@@ -1,4 +1,4 @@
-This is an old project and I am starting to cleanup the code.
+This is an old project, I am still in the process of cleaning the code.
 
 # Play the game
 - [Browser (WebGL)](https://verybadfrags.itch.io/node-flood)
